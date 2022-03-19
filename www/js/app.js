@@ -14,6 +14,9 @@ function download_status(status){
             $('.status-popup').fadeOut('fast');
             $('.status-popup').fadeIn('fast');
             break;
+        case 'converting':
+            $('#download-status').text('Конвертация файла...');
+            break;
         case 'success':
             $('#download-status').text('Загрузка завершена');
             break;
