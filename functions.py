@@ -1,11 +1,11 @@
+from shutil import which
 from time import sleep
 import requests
 import configparser
 from pytube import YouTube
 import eel
 from bs4 import BeautifulSoup
-import ffmpeg
-import os
+import moviepy.editor as mpe
 
 #download function
 config = configparser.ConfigParser()
@@ -37,10 +37,8 @@ def download(url, quality):
 
     v_path = my_video.streams.filter(resolution = resolution).first().download(path, 'v.mp4')
     a_path = my_video.streams.filter(only_audio=True).first().download(path, 'a.mp3')
-    v = ffmpeg.input(v_path)
-    a = ffmpeg.input(a_path)
     status('converting')
-    ffmpeg.concat(v, a, v=1, a=1).output(os.path.join(path, 'video.mp4')).run()
-
+    my_clip = mpe.VideoFileClip(path + '/v.mp4')
+    my_clip.write_videofile(path + '/video.mp4', audio= path + '/a.mp3')
     status('success')
 #
