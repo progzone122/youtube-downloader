@@ -1,0 +1,28 @@
+.status-popup{
+    height: 4em;
+    padding: 0.5em;
+    margin: 1em;
+    background-color: #27272C;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+}
+.status-popup i{
+    color: white;
+    font-size: 1.5em;
+    margin-right: 0.5em;
+    margin-left: 0.3em;
+}
+.status-popup .text-block{
+    padding: 0;
+    margin: 0;
+}
+.status-popup .text-block p{
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: smaller;
+}

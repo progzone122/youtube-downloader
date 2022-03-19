@@ -1,0 +1,50 @@
+h1, p{
+    color: white;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: #131314;
+}
+.main-block{
+    background-color: #27272C;
+    border-radius: 0.5em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3em;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.5);
+}
+.logo-block{
+    display: flex; 
+    justify-content: center;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+.logo-block h1, .logo-block p{
+    color: gray;
+}
+.main-block .forms{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.main-block .input-group span i{
+    font-size: 1.2em;
+    color: white;
+}
+.main-block .input-group span{
+    background-color: #131314;
+    border-color: black;
+}
+.main-block .input-group input{
+    border-color: black;
+    background-color: transparent;
+    box-shadow: none;
+    color: white;
+}
