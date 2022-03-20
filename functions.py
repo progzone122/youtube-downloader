@@ -1,10 +1,12 @@
+from shutil import which
 from time import sleep
-from flask import request
 import requests
 import configparser
 from pytube import YouTube
 import eel
 from bs4 import BeautifulSoup
+import moviepy.editor as mpe
+
 #download function
 config = configparser.ConfigParser()
 config.read('config.ini', encoding='UTF-8')
@@ -19,6 +21,8 @@ def name_parse(url):
 def status(status):
     if status == 'downloading':
         print('[INFO] Downloading...')
+    if status == 'converting':
+        print('[INFO] Converting...')
     if status == 'success':
         print('[INFO] Download success')
     eel.download_status(status)
@@ -29,10 +33,12 @@ def download(url, quality):
     status('downloading')
     resolution = quality
     path = config['output']['path']
-    video_name = config['output']['video_name']
-    audio_name = config['output']['audio_name']
+    file_name = config['output']['file_name']
 
-    v = my_video.streams.filter(resolution = resolution).first().download(path, video_name)
-    a = my_video.streams.filter(only_audio=True).first().download(path, audio_name)
+    v_path = my_video.streams.filter(resolution = resolution).first().download(path, 'v.mp4')
+    a_path = my_video.streams.filter(only_audio=True).first().download(path, 'a.mp3')
+    status('converting')
+    my_clip = mpe.VideoFileClip(path + '/v.mp4')
+    my_clip.write_videofile(path + '/video.mp4', audio= path + '/a.mp3')
     status('success')
 #
