@@ -13,7 +13,7 @@
     <script src="eel.js"></script>
 </head>
 <body>
-    <div class="main-block col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6">
+    <div class="main-block col-11 col-sm-10 col-md-9 col-lg-7 col-xl-5">
         <div class="logo-block"><h1 style="color: red;">You</h1><h1 style="color: white;">tube</h1><p>Downloader</p></div>
         <div class="forms">
             <div class="input-group mb-3">
@@ -42,7 +42,15 @@
             <button class="btn btn-success" style="margin-bottom: 1em;" id="download-button">Скачать</button>
         </div>
     </div>
-    <!-- STATUS POPUP -->
+    <div class="queue">
+        <div class="queue-block col-11 col-sm-7 col-md-7 col-lg-5 col-xl-3" style="display: none;">
+            <i class="bi bi-play-btn-fill"></i>
+            <div class="text-block">
+                <b><p id="video-name">Название видео</p></b>
+                <p id="download-status">Статус загрузки</p>
+            </div>
+        </div>
+    </div>
     <div class="status-popup col-11 col-sm-7 col-md-7 col-lg-5 col-xl-3" style="display: none;">
         <i class="bi bi-play-btn-fill"></i>
         <div class="text-block">
