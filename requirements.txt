@@ -2,4 +2,3 @@ requests
 pytube
 eel
 bs4
-moviepy

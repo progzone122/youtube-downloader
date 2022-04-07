@@ -6,13 +6,14 @@
 #################################
 
 import configparser
+import os
 import functions
 import eel
+
 def main():
     config = configparser.ConfigParser()
     config.read('config.ini', encoding='UTF-8')
     eel.init('www')
-    eel.browsers.set_path("chrome", config['eel']['service_path'])
     #
     @eel.expose
     def config_parse():
@@ -24,7 +25,18 @@ def main():
     @eel.expose
     def download(url, quality):
         functions.download(url, quality)
+
     #
-    eel.start('index.html', mode=config['eel']['service_name'], size=(1920, 1080))
+    
+    eel.start('index.html', mode=config['eel']['service_name'], cmdline_args=[config['eel']['service_path'], 'start.js'])
 if __name__ == '__main__':
-    main()
+    if(os.path.exists('node_modules') == False):
+        os.system("install.py")
+        path = input('Enter the path to save the files: ')
+        config = configparser.ConfigParser()
+        config.read('config.ini', encoding='UTF-8')
+        config.set('output', 'path', path)
+        config.write(open("config.conf", "w"))
+        main()
+    else:
+        main()
