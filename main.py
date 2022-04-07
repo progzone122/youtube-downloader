@@ -36,7 +36,7 @@ if __name__ == '__main__':
         config = configparser.ConfigParser()
         config.read('config.ini', encoding='UTF-8')
         config.set('output', 'path', path)
-        config.write(open("config.conf", "w"))
+        config.write(open("config.ini", "w"))
         main()
     else:
         main()
