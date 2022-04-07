@@ -10,22 +10,22 @@ function download_status(status){
     switch(status){
         case 'downloading':
             //$('#video-name').text('');
-            $('#download-status').text('Загрузка...');
+            $('.status-popup .text-block #download-status').text('Загрузка...');
             $('.status-popup').fadeOut('fast');
             $('.status-popup').fadeIn('fast');
             break;
         case 'converting':
-            $('#download-status').text('Конвертация файла...');
+            $('.status-popup .text-block #download-status').text('Сведение файлов...');
             break;
         case 'success':
-            $('#download-status').text('Загрузка завершена');
+            $('.status-popup .text-block #download-status').text('Загрузка завершена');
             break;
     }
 }
 eel.expose(name_parse)
 function name_parse(name){
     let n = name.substr(0, 30) + '...'
-    $('#video-name').text(n);
+    $('.status-popup .text-block #video-name').text(n);
 }
 //
 function quality_change(quality){

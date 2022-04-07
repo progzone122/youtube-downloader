@@ -1,9 +1,17 @@
+#################################
+#                               #
+# YouTube Downloader            #
+# by @DiabloSat and @GeekManOFF #
+#                               #
+#################################
+
 import configparser
 import functions
 import eel
-def gui():
+def main():
+    config = configparser.ConfigParser()
+    config.read('config.ini', encoding='UTF-8')
     eel.init('www')
-    eel.browsers.set_path("chrome", "bin/chromium/chrome.exe")
     #
     @eel.expose
     def config_parse():
@@ -15,11 +23,9 @@ def gui():
     @eel.expose
     def download(url, quality):
         functions.download(url, quality)
+
     #
-    eel.start('index.html', mode="chrome", size=(1920, 1080))
-def main():
-    #functions.download()
-    #functions.config_erase()
-    gui()
+    
+    eel.start('index.html', mode=config['eel']['service_name'], cmdline_args=[config['eel']['service_path'], 'start.js'])
 if __name__ == '__main__':
     main()
